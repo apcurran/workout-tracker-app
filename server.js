@@ -19,6 +19,6 @@ app.use(express.json());
 
 // Routers
 app.use("/api/workout", workoutRouter);
-app.use("/user", userRouter);
+app.use("/api/user", userRouter);
 
 app.listen(PORT, () => console.log(`Server running in ${process.env.NODE_ENV} mode and Listening on port, ${PORT}.`));
