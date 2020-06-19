@@ -3,6 +3,7 @@
 const express = require("express");
 const router = express.Router();
 const verifyAuth = require("../middleware/verifyAuth");
+const { workoutValidation, workoutEditValidation } = require("../validation/workoutValidation");
 const db = require("../../db/index");
 
 router.get("/", verifyAuth, async (req, res) => {
@@ -26,6 +27,15 @@ router.get("/", verifyAuth, async (req, res) => {
 
 router.post("/", verifyAuth, async (req, res) => {
     try {
+        await workoutValidation(req.body);
+        
+    } catch (err) {
+        return res.status(400).json({
+            error: err.details[0].message
+        });
+    }
+
+    try {
         const user_id = req.user._id;
         const { description, duration } = req.body;
 
@@ -48,6 +58,15 @@ router.post("/", verifyAuth, async (req, res) => {
 
 router.patch("/description/:id", verifyAuth, async (req, res) => {
     try {
+        await workoutEditValidation(req.body);
+        
+    } catch (err) {
+        return res.status(400).json({
+            error: err.details[0].message
+        });
+    }
+
+    try {
         const { id } = req.params;
         const { description } = req.body;
 
@@ -69,6 +88,15 @@ router.patch("/description/:id", verifyAuth, async (req, res) => {
 });
 
 router.patch("/duration/:id", verifyAuth, async (req, res) => {
+    try {
+        await workoutEditValidation(req.body);
+        
+    } catch (err) {
+        return res.status(400).json({
+            error: err.details[0].message
+        });
+    }
+    
     try {
         const { id } = req.params;
         const { duration } = req.body;
