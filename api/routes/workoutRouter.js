@@ -2,13 +2,19 @@
 
 const express = require("express");
 const router = express.Router();
+const verifyAuth = require("../middleware/verifyAuth");
 const db = require("../../db/index");
 
-router.get("/", async (req, res) => {
+router.get("/", verifyAuth, async (req, res) => {
     try {
-        const { rows } = await db.query("SELECT * FROM workout");
+        const user_id = req.user._id;
+
+        const { rows } = await db.query(
+            "SELECT * FROM workout WHERE workout.user_id = $1",
+            [user_id]
+        );
         
-        res.send(rows);
+        res.status(200).json(rows);
 
     } catch (err) {
         console.error(err);
@@ -18,15 +24,19 @@ router.get("/", async (req, res) => {
     }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", verifyAuth, async (req, res) => {
     try {
-        const { user_id, description, duration } = req.body;
+        const user_id = req.user._id;
+        const { description, duration } = req.body;
+
         const newWorkout = await db.query(
             "INSERT INTO workout (user_id, description, duration) VALUES ($1, $2, $3)",
             [user_id, description, duration]
         );
 
-        res.send("New workout added!");
+        res.status(201).json({
+            message: "New workout added!"
+        });
         
     } catch (err) {
         console.error(err);
@@ -36,7 +46,7 @@ router.post("/", async (req, res) => {
     }
 });
 
-router.patch("/description/:id", async (req, res) => {
+router.patch("/description/:id", verifyAuth, async (req, res) => {
     try {
         const { id } = req.params;
         const { description } = req.body;
@@ -46,7 +56,9 @@ router.patch("/description/:id", async (req, res) => {
             [description, id]
         );
 
-        res.send("Workout updated!");
+        res.status(200).json({
+            message: "Workout updated!"
+        });
 
     } catch (err) {
         console.error(err);
@@ -56,7 +68,7 @@ router.patch("/description/:id", async (req, res) => {
     }
 });
 
-router.patch("/duration/:id", async (req, res) => {
+router.patch("/duration/:id", verifyAuth, async (req, res) => {
     try {
         const { id } = req.params;
         const { duration } = req.body;
@@ -66,7 +78,9 @@ router.patch("/duration/:id", async (req, res) => {
             [duration, id]
         );
 
-        res.send("Workout updated!");
+        res.status(200).json({
+            message: "Workout updated!"
+        });
 
     } catch (err) {
         console.error(err);
@@ -76,7 +90,7 @@ router.patch("/duration/:id", async (req, res) => {
     }
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", verifyAuth, async (req, res) => {
     try {
         const { id } = req.params;
 
@@ -85,7 +99,9 @@ router.delete("/:id", async (req, res) => {
             [id]
         );
 
-        res.send(`Workout with id, ${id} deleted!`);
+        res.status(200).json({
+            message: `Workout with id, ${id} deleted!`
+        });
         
     } catch (err) {
         console.error(err);
