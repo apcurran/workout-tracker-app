@@ -11,6 +11,10 @@ function workoutValidation(data) {
         duration: Joi
                     .string()
                     .min(1)
+                    .required(),
+        workout_date: Joi
+                    .string()
+                    .min(1)
                     .required()
     });
 
@@ -24,6 +28,10 @@ function workoutEditValidation(data) {
                     .min(1)
                     .required(),
         duration: Joi
+                    .string()
+                    .min(1)
+                    .required(),
+        workout_date: Joi
                     .string()
                     .min(1)
                     .required()

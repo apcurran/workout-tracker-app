@@ -37,11 +37,11 @@ router.post("/", verifyAuth, async (req, res) => {
 
     try {
         const user_id = req.user._id;
-        const { description, duration } = req.body;
+        const { description, duration, workout_date } = req.body;
 
         const newWorkout = await db.query(
-            "INSERT INTO workout (user_id, description, duration) VALUES ($1, $2, $3)",
-            [user_id, description, duration]
+            "INSERT INTO workout (user_id, description, duration, workout_date) VALUES ($1, $2, $3, $4)",
+            [user_id, description, duration, workout_date]
         );
 
         res.status(201).json({

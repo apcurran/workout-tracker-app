@@ -12,6 +12,7 @@ CREATE TABLE workout(
     user_id INT NOT NULL,
     description VARCHAR(300),
     duration VARCHAR(300),
+    workout_date VARCHAR(100),
     posted_on TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY(user_id) REFERENCES workout_user(user_id) ON DELETE CASCADE
 );
