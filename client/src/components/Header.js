@@ -13,6 +13,12 @@ export default function Header() {
                     <li className="nav__items">
                         <Link to="/workouts" className="nav__link">Workouts</Link>
                     </li>
+                    <li className="nav__items">
+                        <Link to="/signup" className="nav__link">Sign Up</Link>
+                    </li>
+                    <li className="nav__items">
+                        <Link to="/login" className="nav__link">Login</Link>
+                    </li>
                 </ul>
             </nav>
         </header>

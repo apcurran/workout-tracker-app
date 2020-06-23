@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 
 export default function About() {
     return (
-        <div className="grid-container">
+        <div className="home-grid-container">
             <figure className="hero-container">
                 <img src={Athlete} alt="Female athlete" className="hero-img"/>
-                <div className="hero-box"></div>
-                <div className="hero-box"></div>
-                <div className="hero-box"></div>
+                <div className="hero-box hero-box-outline"></div>
+                <div className="hero-box hero-box-solid"></div>
+                <div className="hero-box hero-box-outline"></div>
             </figure>
             <section className="info">
                 <p className="info__text">
