@@ -15,7 +15,7 @@ export default function About() {
                 <p className="info__text">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut pharetra sit amet aliquam id diam maecenas ultricies. Est placerat in egestas erat imperdiet sed euismod nisi. Tellus in metus vulputate eu scelerisque felis imperdiet proin. At augue eget arcu dictum varius duis at consectetur.
                 </p>
-                <Link to="/workouts" className="info__workouts-btn">Track Workouts</Link>
+                <Link to="/user/login" className="info__workouts-btn">Login</Link>
             </section>
         </div>
     )

@@ -1,6 +1,5 @@
 import React from 'react';
 import WorkoutsForm from "./WorkoutsForm";
-import WorkoutDetails from "./WorkoutDetails";
 import WorkoutsList from "./WorkoutsList";
 
 export default function Workouts() {

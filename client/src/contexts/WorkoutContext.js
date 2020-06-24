@@ -1,9 +1,22 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
 export const WorkoutContext = createContext();
 
 function WorkoutContextProvider(props) {
     const [workouts, setWorkouts] = useState([]);
+
+    useEffect(() => {
+        const API_URL = "/api/workout";
+        const options = {
+            headers: {
+                Authorization: `Bearer ${localStorage.authToken}`
+            }
+        };
+
+        fetch(API_URL, options)
+            .then(response => response.json())
+            .then(data => setWorkouts(data));
+    }, []);
 
     function addWorkout(description, duration, date) {
         setWorkouts([
@@ -13,7 +26,7 @@ function WorkoutContextProvider(props) {
     }
 
     function removeWorkout(id) {
-        setWorkouts(workouts.filter(workout => workout.id !== id));
+        setWorkouts(workouts.filter(workout => workout.workout_id !== id));
     }
 
     return (

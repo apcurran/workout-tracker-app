@@ -8,7 +8,7 @@ export default function WorkoutsList() {
     return workouts.length ? (
         <ul className="workouts-list">
             {workouts.map(workout => (
-                <WorkoutDetails workout={workout} key={workout.id} />
+                <WorkoutDetails workout={workout} key={workout.workout_id} />
             ))}
         </ul>
     ) : (
