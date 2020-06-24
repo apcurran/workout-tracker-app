@@ -244,3 +244,7 @@ p {
 .workouts-form__submit:hover {
   opacity: .8;
 }
+
+.workout-list__item span:not(:last-of-type) {
+  margin-right: 1rem;
+}
