@@ -9,7 +9,9 @@
   --light-purple: #a3bffa;
 }
 
-body {
+body,
+input,
+button {
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -163,7 +165,7 @@ p {
   grid-auto-rows: 1fr;
 }
 
-.workouts-list {
+.workouts-section {
   align-self: center;
 
   padding: 2rem;
@@ -188,4 +190,57 @@ p {
     #fff 2.5rem
   );
   opacity: .4;
+}
+
+.workouts-form {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.workouts-form__group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  margin: 0 .5rem;
+}
+
+.workouts-form__group__label {
+  margin-bottom: .2rem;
+}
+
+.workouts-form__group__input {
+  padding: .5rem;
+  border: none;
+  border-bottom: 1px solid #aaa;
+}
+
+.input--date {
+  padding: .4rem;
+}
+
+.input--date::placeholder {
+  color: purple;
+}
+
+.workouts-form__submit {
+  align-self: flex-end;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: .2rem;
+  border: none;
+  background-color: var(--dark-purple);
+  cursor: pointer;
+}
+
+.icon-plus {
+  fill: #fff;
+}
+
+.workouts-form__submit:hover {
+  opacity: .8;
 }
