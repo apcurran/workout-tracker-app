@@ -10,7 +10,7 @@ export default function WorkoutDetails({ workout }) {
            <span>{workout.description}</span>
            <span>{workout.duration}</span>
            <span>{workout.workout_date}</span>
-           <button onClick={() => removeWorkout(workout.id)}>
+           <button onClick={() => removeWorkout(workout.workout_id)}>
                <img src={TrashIcon} alt="Trashcan icon"/>
             </button>
         </li>

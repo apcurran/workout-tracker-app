@@ -20,7 +20,7 @@ function WorkoutContextProvider(props) {
 
     function addWorkout(description, duration, date) {
         setWorkouts([
-            { description, duration, workout_date: date, id: Date.now().toString() },
+            { description, duration, workout_date: date, workout_id: Date.now().toString() },
             ...workouts
         ]);
     }
