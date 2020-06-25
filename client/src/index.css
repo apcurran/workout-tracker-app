@@ -168,7 +168,7 @@ p {
 .workouts-section {
   align-self: center;
 
-  padding: 2rem;
+  padding: 2rem 2.75rem;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, .2);
   background-color: #fff;
@@ -195,7 +195,7 @@ p {
 .workouts-form {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .workouts-form__group {
@@ -231,8 +231,10 @@ p {
   justify-content: center;
   align-items: center;
 
+  margin-left: .75rem;
   padding: .2rem;
   border: none;
+  border-radius: 4px;
   background-color: var(--dark-purple);
   cursor: pointer;
 }
@@ -245,6 +247,36 @@ p {
   opacity: .8;
 }
 
-.workout-list__item span:not(:last-of-type) {
+.workout-list__item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.workout-list__item span {
   margin-right: 1rem;
+}
+
+.workout-list__item__edit-btn {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--dark-purple);
+  cursor: pointer;
+}
+
+.workout-list__item__delete-btn {
+  margin-left: 1.5rem;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: .6;
+
+  transition: opacity 125ms ease-in-out;
+}
+
+.workout-list__item__delete-btn:hover {
+  opacity: 1;
 }

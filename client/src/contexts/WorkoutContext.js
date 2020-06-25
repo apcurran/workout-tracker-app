@@ -4,6 +4,7 @@ export const WorkoutContext = createContext();
 
 function WorkoutContextProvider(props) {
     const [workouts, setWorkouts] = useState([]);
+    const [isEditing, setIsEditing] = useState(false);
     const [error, setError] = useState("");
 
     useEffect(() => {
@@ -52,6 +53,11 @@ function WorkoutContextProvider(props) {
         ]);
     }
 
+    async function editWorkout(id) {
+        const selectedWorkout = workouts.find(workout => workout.workout_id === id);
+        console.log(selectedWorkout);
+    }
+
     async function removeWorkout(id) {
         // Remove from DOM
         setWorkouts(workouts.filter(workout => workout.workout_id !== id));
@@ -76,7 +82,7 @@ function WorkoutContextProvider(props) {
     }
 
     return (
-        <WorkoutContext.Provider value={ {workouts, addWorkout, removeWorkout} }>
+        <WorkoutContext.Provider value={ {workouts, addWorkout, editWorkout, removeWorkout} }>
             {props.children}
         </WorkoutContext.Provider>
     );
