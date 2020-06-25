@@ -11,7 +11,7 @@ router.get("/", verifyAuth, async (req, res) => {
         const user_id = req.user._id;
 
         const { rows } = await db.query(
-            "SELECT * FROM workout WHERE workout.user_id = $1",
+            "SELECT * FROM workout WHERE workout.user_id = $1 ORDER BY workout.workout_date DESC",
             [user_id]
         );
         
@@ -40,13 +40,11 @@ router.post("/", verifyAuth, async (req, res) => {
         const { description, duration, workout_date } = req.body;
 
         const newWorkout = await db.query(
-            "INSERT INTO workout (user_id, description, duration, workout_date) VALUES ($1, $2, $3, $4)",
+            "INSERT INTO workout (user_id, description, duration, workout_date) VALUES ($1, $2, $3, $4) RETURNING workout_id",
             [user_id, description, duration, workout_date]
         );
 
-        res.status(201).json({
-            message: "New workout added!"
-        });
+        res.status(201).json(newWorkout.rows[0].workout_id);
         
     } catch (err) {
         console.error(err);

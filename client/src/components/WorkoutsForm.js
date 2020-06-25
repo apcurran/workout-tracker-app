@@ -3,6 +3,8 @@ import { WorkoutContext } from '../contexts/WorkoutContext';
 
 export default function WorkoutsForm() {
     const { addWorkout } = useContext(WorkoutContext);
+    const { error } = useContext(WorkoutContext);
+
     const [activity, setActivity] = useState("");
     const [duration, setDuration] = useState("");
     const [date, setDate] = useState("");
@@ -13,15 +15,21 @@ export default function WorkoutsForm() {
         setDate("");
     }
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
         
+        // Call context function
         addWorkout(activity, duration, date);
+
+        // Clear form inputs
         clearInputs();
     }
 
     return (
         <form onSubmit={handleSubmit} className="workouts-form">
+            {error ? (
+                <p className="error">{error}</p>
+            ) : null}
             <div className="workouts-form__group">
                 <label htmlFor="description" className="workouts-form__group__label">Activity</label>
                 <input
