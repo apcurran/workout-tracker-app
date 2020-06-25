@@ -55,6 +55,8 @@ function WorkoutContextProvider(props) {
 
     async function editWorkout(id) {
         const selectedWorkout = workouts.find(workout => workout.workout_id === id);
+
+        setIsEditing(true);
         console.log(selectedWorkout);
     }
 
@@ -82,7 +84,7 @@ function WorkoutContextProvider(props) {
     }
 
     return (
-        <WorkoutContext.Provider value={ {workouts, isEditing, addWorkout, editWorkout, removeWorkout} }>
+        <WorkoutContext.Provider value={ {workouts, isEditing, setIsEditing, addWorkout, editWorkout, removeWorkout} }>
             {props.children}
         </WorkoutContext.Provider>
     );
