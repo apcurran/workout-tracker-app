@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import Workouts from "./components/Workouts";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import WorkoutsEditModal from './components/WorkoutsEditModal';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/user/signup" exact component={Signup} />
           </Switch>
           <Footer />
+          <WorkoutsEditModal />
         </WorkoutContextProvider>
       </div>
     </Router>
