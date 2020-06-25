@@ -4,6 +4,7 @@ import { WorkoutContext } from '../contexts/WorkoutContext';
 export default function WorkoutsForm() {
     const { addWorkout } = useContext(WorkoutContext);
     const { error } = useContext(WorkoutContext);
+    const { isEditing } = useContext(WorkoutContext);
 
     const [activity, setActivity] = useState("");
     const [duration, setDuration] = useState("");

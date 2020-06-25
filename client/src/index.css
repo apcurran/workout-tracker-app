@@ -193,7 +193,8 @@ p {
 }
 
 .workouts-form {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) auto;
   align-items: center;
   margin-bottom: 2rem;
 }
@@ -202,8 +203,10 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
 
-  margin: 0 .5rem;
+.workouts-form__group:not(:last-of-type) {
+  margin-right: .5rem;
 }
 
 .workouts-form__group__label {
@@ -248,13 +251,10 @@ p {
 }
 
 .workout-list__item {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) auto auto;
   align-items: center;
   margin-bottom: 1rem;
-}
-
-.workout-list__item span {
-  margin-right: 1rem;
 }
 
 .workout-list__item__edit-btn {
