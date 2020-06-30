@@ -54,7 +54,7 @@ router.post("/", verifyAuth, async (req, res) => {
     }
 });
 
-router.patch("/description/:id", verifyAuth, async (req, res) => {
+router.patch("/:id", verifyAuth, async (req, res) => {
     try {
         await workoutEditValidation(req.body);
         
@@ -66,15 +66,15 @@ router.patch("/description/:id", verifyAuth, async (req, res) => {
 
     try {
         const { id } = req.params;
-        const { description } = req.body;
+        const { description, duration, workout_date } = req.body;
 
         await db.query(
-            "UPDATE workout SET description = $1 WHERE workout_id = $2",
-            [description, id]
+            "UPDATE workout SET description = $1, duration = $2, workout_date = $3 WHERE workout_id = $4",
+            [description, duration, workout_date, id]
         );
 
         res.status(200).json({
-            message: "Workout updated!"
+            message: "Workout updated"
         });
 
     } catch (err) {
@@ -85,36 +85,36 @@ router.patch("/description/:id", verifyAuth, async (req, res) => {
     }
 });
 
-router.patch("/duration/:id", verifyAuth, async (req, res) => {
-    try {
-        await workoutEditValidation(req.body);
+// router.patch("/:id", verifyAuth, async (req, res) => {
+//     try {
+//         await workoutEditValidation(req.body);
         
-    } catch (err) {
-        return res.status(400).json({
-            error: err.details[0].message
-        });
-    }
+//     } catch (err) {
+//         return res.status(400).json({
+//             error: err.details[0].message
+//         });
+//     }
     
-    try {
-        const { id } = req.params;
-        const { duration } = req.body;
+//     try {
+//         const { id } = req.params;
+//         const { duration } = req.body;
 
-        await db.query(
-            "UPDATE workout SET duration = $1 WHERE workout_id = $2",
-            [duration, id]
-        );
+//         await db.query(
+//             "UPDATE workout SET duration = $1 WHERE workout_id = $2",
+//             [duration, id]
+//         );
 
-        res.status(200).json({
-            message: "Workout updated!"
-        });
+//         res.status(200).json({
+//             message: "Workout updated!"
+//         });
 
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({
-            error: err
-        });
-    }
-});
+//     } catch (err) {
+//         console.error(err);
+//         res.status(500).json({
+//             error: err
+//         });
+//     }
+// });
 
 router.delete("/:id", verifyAuth, async (req, res) => {
     try {

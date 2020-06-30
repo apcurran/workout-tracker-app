@@ -6,6 +6,7 @@ function WorkoutContextProvider(props) {
     const [workouts, setWorkouts] = useState([]);
     const [isEditing, setIsEditing] = useState(false);
     const [error, setError] = useState("");
+    const [currentWorkoutId, setCurrentWorkoutId] = useState("");
 
     useEffect(() => {
         // Inital data
@@ -53,11 +54,48 @@ function WorkoutContextProvider(props) {
         ]);
     }
 
-    async function editWorkout(id) {
-        const selectedWorkout = workouts.find(workout => workout.workout_id === id);
-
+    async function editWorkoutModal(id) {
         setIsEditing(true);
-        console.log(selectedWorkout);
+        setCurrentWorkoutId(id)
+    }
+
+    async function handleEditWorkoutSubmit(id, description, duration, workout_date) {
+        // Update DOM
+        const tempWorkouts = workouts.map(workout => {
+            if (workout.workout_id === id) {
+                return { ...workout, description, duration, workout_date };
+            } else {
+                return workout;
+            }
+        });
+
+        setWorkouts(tempWorkouts);
+
+        // Update from db
+        const API_URL = `/api/workout/${id}`;
+        const options = {
+            method: "PATCH",
+            headers: {
+                Authorization: `Bearer ${localStorage.authToken}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                description: description,
+                duration: duration,
+                workout_date: workout_date
+            })
+        };
+
+        const response = await fetch(API_URL, options);
+        const data = await response.json();
+    
+        if (data.hasOwnProperty("error")) {
+            setError(data.error);
+
+            return;
+        }
+
+        
     }
 
     async function removeWorkout(id) {
@@ -84,7 +122,7 @@ function WorkoutContextProvider(props) {
     }
 
     return (
-        <WorkoutContext.Provider value={ {workouts, isEditing, setIsEditing, addWorkout, editWorkout, removeWorkout} }>
+        <WorkoutContext.Provider value={ {workouts, isEditing, setIsEditing, addWorkout, currentWorkoutId, editWorkoutModal, handleEditWorkoutSubmit, removeWorkout} }>
             {props.children}
         </WorkoutContext.Provider>
     );
