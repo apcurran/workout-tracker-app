@@ -300,7 +300,34 @@ p {
   align-items: center;
 }
 
-.edit-modal__form {
-  padding: 2rem;
+.edit-modal-form {
+  padding: 2rem 3rem;
+
   background-color: #fff;
+}
+
+.edit-modal-form__group {
+  margin: 0 0 2rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-modal-form__group__label {
+  margin-bottom: .25rem;
+}
+
+.edit-modal-form__group__input {
+  padding: .5rem;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+}
+
+.edit-modal-form__submit {
+  padding: .6rem 1.25rem;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--dark-purple);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
 }

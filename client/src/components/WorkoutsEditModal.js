@@ -18,11 +18,15 @@ export default function WorkoutsEditModal() {
         setIsEditing(false);
     }
 
+    function closeEditModal(event) {
+        setIsEditing(false);
+    }
+
     return (
-        <section className={showHideClassName}>
-            <form onSubmit={handleEditSubmit} className="edit-modal__form">
-                <div className="workouts-form__group">
-                    <label htmlFor="description" className="workouts-form__group__label">Activity</label>
+        <section onClick={closeEditModal} className={showHideClassName}>
+            <form onSubmit={handleEditSubmit} onClick={(event) => event.stopPropagation()} className="edit-modal-form">
+                <div className="edit-modal-form__group">
+                    <label htmlFor="description" className="edit-modal-form__group__label">Activity</label>
                     <input
                         value={editActivity}
                         onChange={(event) => setEditActivity(event.target.value)}
@@ -30,11 +34,11 @@ export default function WorkoutsEditModal() {
                         type="text"
                         id="description"
                         name="description"
-                        className="workouts-form__group__input"
+                        className="edit-modal-form__group__input"
                     />
                 </div>
-                <div className="workouts-form__group">
-                    <label htmlFor="duration" className="workouts-form__group__label">Duration</label>
+                <div className="edit-modal-form__group">
+                    <label htmlFor="duration" className="edit-modal-form__group__label">Duration</label>
                     <input
                         value={editDuration}
                         onChange={(event) => setEditDuration(event.target.value)}
@@ -42,11 +46,11 @@ export default function WorkoutsEditModal() {
                         type="text"
                         id="duration"
                         name="duration"
-                        className="workouts-form__group__input"
+                        className="edit-modal-form__group__input"
                     />
                 </div>
-                <div className="workouts-form__group">
-                    <label htmlFor="workout_date" className="workouts-form__group__label">Date</label>
+                <div className="edit-modal-form__group">
+                    <label htmlFor="workout_date" className="edit-modal-form__group__label">Date</label>
                     <input
                         value={editDate}
                         onChange={(event) => setEditDate(event.target.value)}
@@ -54,10 +58,10 @@ export default function WorkoutsEditModal() {
                         type="date"
                         id="workout_date"
                         name="workout_date"
-                        className="workouts-form__group__input input--date"
+                        className="edit-modal-form__group__input input--date"
                     />
                 </div>
-                <button type="submit" className="workouts-form__submit">Done</button>
+                <button type="submit" className="edit-modal-form__submit">Done</button>
             </form>
         </section>
     )
