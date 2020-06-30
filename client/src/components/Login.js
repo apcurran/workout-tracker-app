@@ -1,4 +1,5 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useContext } from 'react';
+import { LoginStatusContext } from "../contexts/LoginStatusContext";
 import { useHistory } from "react-router-dom";
 
 export default function Login() {
@@ -7,6 +8,8 @@ export default function Login() {
     const [error, setError] = useState("");
 
     let history = useHistory();
+
+    const { handleLoginStatus } = useContext(LoginStatusContext);
 
     const handleSubmit = useCallback( async (event) => {
         event.preventDefault();
@@ -37,7 +40,7 @@ export default function Login() {
 
             localStorage.setItem("authToken", token);
 
-            // TODO: Login to change nav links
+            handleLoginStatus(); // Flips login status to true
 
             history.push("/user/workouts"); // Send to animal list page with admin rights
     
@@ -45,7 +48,7 @@ export default function Login() {
             console.error(err);
         }
 
-    }, [email, password, history] );
+    }, [email, password, history, handleLoginStatus] );
 
     return (
         <div>

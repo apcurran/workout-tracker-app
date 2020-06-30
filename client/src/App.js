@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import WorkoutContextProvider from "./contexts/WorkoutContext";
+import LoginStatusContextProvider from "./contexts/LoginStatusContext";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
@@ -13,17 +14,21 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <WorkoutContextProvider>
-          <Header />
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/user/workouts" exact component={Workouts} />
-            <Route path="/user/login" exact component={Login} />
-            <Route path="/user/signup" exact component={Signup} />
-          </Switch>
-          <Footer />
-          <WorkoutsEditModal />
-        </WorkoutContextProvider>
+        <LoginStatusContextProvider>
+          <WorkoutContextProvider>
+
+            <Header />
+            <Switch>
+              <Route path="/" exact component={Home} />
+              <Route path="/user/workouts" exact component={Workouts} />
+              <Route path="/user/login" exact component={Login} />
+              <Route path="/user/signup" exact component={Signup} />
+            </Switch>
+            <Footer />
+            <WorkoutsEditModal />
+
+          </WorkoutContextProvider>
+        </LoginStatusContextProvider>
       </div>
     </Router>
   );

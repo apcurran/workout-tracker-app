@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { LoginStatusContext } from "../contexts/LoginStatusContext";
 import { useHistory } from 'react-router-dom';
 
-export default function Logout({ handleLogin }) {
+
+export default function Logout() {
     let history = useHistory();
+
+    const { handleLoginStatus } = useContext(LoginStatusContext);
 
     function handleLogout() {
         if (localStorage.authToken) {
             localStorage.clear();
         }
 
-        // handleLogin(); // trigger login status to false
+        handleLoginStatus(); // trigger login status to false
 
         history.push("/user/login");
     }
