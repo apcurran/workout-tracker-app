@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import LogoutBtn from "./LogoutBtn";
 
 export default function Header() {
     return (
@@ -17,7 +18,10 @@ export default function Header() {
                         <Link to="/user/signup" className="nav__link">Sign Up</Link>
                     </li>
                     <li className="nav__items">
-                        <Link to="/user/login" className="nav__link">Login</Link>
+                        <Link to="/user/login" className="nav__link">Log In</Link>
+                    </li>
+                    <li className="nav__items">
+                        <LogoutBtn />
                     </li>
                 </ul>
             </nav>
