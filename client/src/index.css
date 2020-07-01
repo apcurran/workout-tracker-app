@@ -25,6 +25,7 @@ p {
 }
 
 .error {
+  margin-bottom: 1.1rem;
   color: darkred;
   font-size: 1rem;
 }
@@ -152,6 +153,7 @@ p {
 
 .info {
   align-self: center;
+  padding: 0 1rem;
 }
 
 .info__text {
@@ -211,7 +213,8 @@ p {
 /* Workouts Page */
 
 .workouts-grid-container {
-  max-width: 78rem;
+  max-width: 45rem;
+  width: 92.5%;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
@@ -392,4 +395,83 @@ p {
   text-transform: uppercase;
   letter-spacing: .08em;
   cursor: pointer;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 47em) {
+  .workouts-form {
+    grid-template-columns: 1fr;
+  }
+
+  .workouts-form__group:not(:last-of-type) {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+
+  .workouts-form__submit {
+    align-self: flex-start;
+    margin-top: 1rem;
+    margin-left: 0;
+  }
+
+  .workout-list__item__delete-btn {
+    margin-left: .75rem;
+  }
+}
+
+@media screen and (max-width: 41em) {
+  .workouts-grid-container {
+    margin: 2rem auto 3.5rem auto;
+  }
+
+  .home-grid-container {
+    grid-template-columns: 1fr;
+  }
+
+  .nav__link {
+    font-size: .9rem;
+  }
+
+  .stripes {
+    display: none;
+  }
+
+  .workout-list__item span {
+    font-size: .9rem;
+  }
+
+  .workout-list__item__date {
+    align-self: end;
+  }
+
+  .workout-list__item__edit-btn {
+    margin-left: .5rem;
+  }
+}
+
+@media screen and (max-width: 41em) {
+  .nav {
+    flex-direction: column;
+  }
+
+  .nav__list {
+    margin-top: 1rem;
+  }
+
+  .nav__items {
+    margin: 0 1rem;
+  }
+
+  .hero-img {
+    width: 16rem;
+  }
+
+  .hero-box {
+    display: none;
+  }
+
+  .form__title {
+    font-size: 1.4rem;
+  }
 }
