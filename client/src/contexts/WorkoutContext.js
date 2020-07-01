@@ -1,4 +1,6 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useContext } from "react";
+import { LoginStatusContext } from "./LoginStatusContext";
+
 
 export const WorkoutContext = createContext();
 
@@ -7,6 +9,8 @@ function WorkoutContextProvider(props) {
     const [isEditing, setIsEditing] = useState(false);
     const [error, setError] = useState("");
     const [currentWorkoutId, setCurrentWorkoutId] = useState("");
+
+    const { loginStatus } = useContext(LoginStatusContext);
 
     useEffect(() => {
         // Inital data
@@ -20,7 +24,7 @@ function WorkoutContextProvider(props) {
         fetch(API_URL, options)
             .then(response => response.json())
             .then(data => setWorkouts(data));
-    }, []);
+    }, [loginStatus]);
 
     async function addWorkout(description, duration, date) { 
         // Add workout to db

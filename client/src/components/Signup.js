@@ -44,7 +44,7 @@ export default function Signup() {
     }, [username, email, password, history] );
 
     return (
-        <div>
+        <div className="form-container">
             <form onSubmit={handleSubmit} className="form">
                 <h1 className="form__title">Sign Up</h1>
                 {error ? (

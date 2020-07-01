@@ -51,7 +51,7 @@ export default function Login() {
     }, [email, password, history, handleLoginStatus] );
 
     return (
-        <div>
+        <div className="form-container">
             <form onSubmit={handleSubmit} className="form">
                 <h1 className="form__title">Log In</h1>
                 {error ? (

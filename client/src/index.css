@@ -24,6 +24,11 @@ p {
   line-height: 1.6;
 }
 
+.error {
+  color: darkred;
+  font-size: 1rem;
+}
+
 .App {
   min-height: 100vh;
   display: grid;
@@ -31,7 +36,7 @@ p {
 }
 
 .header {
-  padding: 1.5rem 0;
+  padding: 1.5rem 1rem;
 }
 
 .footer {
@@ -155,11 +160,52 @@ p {
 
 .info__workouts-btn {
   display: inline-block;
-  padding: .9rem 1.25rem;
+  padding: .75rem 1.25rem;
+  border-radius: 4px;
   background-color: var(--dark-purple);
   color: #fff;
   text-transform: uppercase;
   letter-spacing: .08em;
+}
+
+/* Sign Up and Log In Forms */
+
+.form-container {
+  margin: 2.5rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  width: 92.5%;
+  max-width: 20rem;
+}
+
+.form__title {
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25rem;
+}
+
+.form-group__label {
+  margin-bottom: .5rem;
+}
+
+.form-group__input {
+  padding: .5rem .65rem;
+  font-size: 1rem;
+  border: 2px solid #c9c9c9;
+  border-radius: 4px;
+  outline: none;
+}
+
+.form-group__input:focus {
+  border-right-color: var(--dark-purple);
+  border-bottom-color: var(--dark-purple);
 }
 
 /* Workouts Page */
@@ -311,10 +357,16 @@ p {
   padding: 2rem 3rem;
 
   background-color: #fff;
+  border-radius: 10px;
+}
+
+.edit-modal-form__title {
+  margin-bottom: 1.25rem;
+  color: var(--dark-purple);
 }
 
 .edit-modal-form__group {
-  margin: 0 0 2rem 0;
+  margin: 0 0 1.25rem 0;
   display: flex;
   flex-direction: column;
 }
@@ -329,12 +381,15 @@ p {
   border: 1px solid #bbb;
 }
 
+.form__submit,
 .edit-modal-form__submit {
-  padding: .6rem 1.25rem;
+  padding: .75rem 1.25rem;
   border: none;
   border-radius: 4px;
   background-color: var(--dark-purple);
   color: #fff;
   font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
   cursor: pointer;
 }

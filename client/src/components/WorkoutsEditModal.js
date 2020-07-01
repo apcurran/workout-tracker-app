@@ -25,6 +25,7 @@ export default function WorkoutsEditModal() {
     return (
         <section onClick={closeEditModal} className={showHideClassName}>
             <form onSubmit={handleEditSubmit} onClick={(event) => event.stopPropagation()} className="edit-modal-form">
+                <h2 className="edit-modal-form__title">Edit Workout</h2>
                 <div className="edit-modal-form__group">
                     <label htmlFor="description" className="edit-modal-form__group__label">Activity</label>
                     <input
