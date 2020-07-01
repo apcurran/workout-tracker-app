@@ -24,7 +24,7 @@
 
 - Context API used for storing centralized data
 
-- Log In and Log Out functionality supported, with dynamic nav links based on log in status
+- Log in and log out functionality supported, with dynamic nav links based on log in status
 
 - Custom design and CSS
 
