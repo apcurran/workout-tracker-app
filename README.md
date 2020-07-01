@@ -26,4 +26,8 @@
 
 - Log In and Log Out functionality supported, with dynamic nav links based on log in status
 
+- Custom design and CSS
+
+- Utilizes CSS variables
+
 - Deployed with Heroku (includes Heroku PostgreSQL db)
