@@ -12,7 +12,7 @@ export default function WorkoutDetails({ workout }) {
            <span>{workout.duration}</span>
            <span className="workout-list__item__date">{workout.workout_date}</span>
            <button onClick={() => editWorkoutModal(workout.workout_id)} className="workout-list__item__edit-btn">edit</button>
-           <button onClick={() => removeWorkout(workout.workout_id)} className="workout-list__item__delete-btn">
+           <button onClick={() => removeWorkout(workout.workout_id)} className="workout-list__item__delete-btn" aria-label="Delete">
                <img src={TrashIcon} alt="Trashcan icon"/>
             </button>
         </li>
