@@ -1,12 +1,17 @@
 import React from 'react';
-import Athlete from "../images/athlete.png";
+import AthleteWebp from "../images/athlete-med.webp";
+import Athlete from "../images/athlete-med.png";
 import { Link } from "react-router-dom";
 
 export default function About() {
     return (
         <div className="home-grid-container">
             <figure className="hero-container">
-                <img src={Athlete} alt="Female athlete" className="hero-img"/>
+                {/* <img src={Athlete} alt="Female athlete" className="hero-img"/> */}
+                <picture>
+                    <source srcset={AthleteWebp} type="image/webp"/>
+                    <img className="hero-img" src={Athlete} alt="Female athlete exercising" width="400" height="762"/>
+                </picture>
                 <div className="hero-box hero-box-outline"></div>
                 <div className="hero-box hero-box-solid"></div>
                 <div className="hero-box hero-box-outline"></div>

@@ -111,6 +111,7 @@ p {
 
 .hero-img {
   width: 21rem;
+  height: auto;
 }
 
 .hero-box:first-of-type {
