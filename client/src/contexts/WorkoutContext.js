@@ -46,6 +46,7 @@ function WorkoutContextProvider(props) {
         const data = await response.json();
         
         if (data.hasOwnProperty("error")) {
+            console.log(data);
             setError(data.error);
             
             return;

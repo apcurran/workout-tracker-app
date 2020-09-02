@@ -7,7 +7,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { signupValidation, loginValidation } = require("../validation/userValidation");
 
-router.post("/signup", async (req, res) => {
+router.post("/signup", async (req, res, next) => {
     try {
         await signupValidation(req.body);
 
@@ -47,14 +47,11 @@ router.post("/signup", async (req, res) => {
         });
 
     } catch (err) {
-        console.error(err);
-        res.status(500).json({
-            error: err
-        });
+        next(err);
     }
 });
 
-router.post("/login", async (req, res) => {
+router.post("/login", async (req, res, next) => {
     try {
         await loginValidation(req.body);
         
@@ -98,10 +95,7 @@ router.post("/login", async (req, res) => {
         res.header("Authorization", `Bearer ${token}`).json(token);
         
     } catch (err) {
-        console.error(err);
-        res.status(500).json({
-            error: err
-        });
+        next(err);
     }
 });
 

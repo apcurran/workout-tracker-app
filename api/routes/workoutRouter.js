@@ -6,7 +6,7 @@ const verifyAuth = require("../middleware/verifyAuth");
 const { workoutValidation, workoutEditValidation } = require("../validation/workoutValidation");
 const db = require("../../db/index");
 
-router.get("/", verifyAuth, async (req, res) => {
+router.get("/", verifyAuth, async (req, res, next) => {
     try {
         const user_id = req.user._id;
 
@@ -18,14 +18,11 @@ router.get("/", verifyAuth, async (req, res) => {
         res.status(200).json(rows);
 
     } catch (err) {
-        console.error(err);
-        res.status(500).json({
-            error: err
-        });
+        next(err);
     }
 });
 
-router.post("/", verifyAuth, async (req, res) => {
+router.post("/", verifyAuth, async (req, res, next) => {
     try {
         await workoutValidation(req.body);
         
@@ -47,14 +44,11 @@ router.post("/", verifyAuth, async (req, res) => {
         res.status(201).json(newWorkout.rows[0].workout_id);
         
     } catch (err) {
-        console.error(err);
-        res.status(500).json({
-            error: err
-        });
+        next(err);
     }
 });
 
-router.patch("/:id", verifyAuth, async (req, res) => {
+router.patch("/:id", verifyAuth, async (req, res, next) => {
     try {
         await workoutEditValidation(req.body);
         
@@ -78,14 +72,11 @@ router.patch("/:id", verifyAuth, async (req, res) => {
         });
 
     } catch (err) {
-        console.error(err);
-        res.status(500).json({
-            error: err
-        });
+        next(err);
     }
 });
 
-// router.patch("/:id", verifyAuth, async (req, res) => {
+// router.patch("/:id", verifyAuth, async (req, res, next) => {
 //     try {
 //         await workoutEditValidation(req.body);
         
@@ -109,14 +100,11 @@ router.patch("/:id", verifyAuth, async (req, res) => {
 //         });
 
 //     } catch (err) {
-//         console.error(err);
-//         res.status(500).json({
-//             error: err
-//         });
+//         next(err);
 //     }
 // });
 
-router.delete("/:id", verifyAuth, async (req, res) => {
+router.delete("/:id", verifyAuth, async (req, res, next) => {
     try {
         const { id } = req.params;
 
@@ -130,10 +118,7 @@ router.delete("/:id", verifyAuth, async (req, res) => {
         });
         
     } catch (err) {
-        console.error(err);
-        res.status(500).json({
-            error: err
-        });
+        next(err);
     }
 });
 
