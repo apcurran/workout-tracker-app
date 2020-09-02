@@ -11,7 +11,7 @@ router.get("/", verifyAuth, async (req, res, next) => {
         const user_id = req.user._id;
 
         const { rows } = await db.query(
-            "SELECT * FROM workout WHERE workout.user_id = $1 ORDER BY workout.workout_date DESC",
+            "SELECT * FROM workout WHERE workout.user_id = $1 ORDER BY workout.posted_on DESC",
             [user_id]
         );
         
