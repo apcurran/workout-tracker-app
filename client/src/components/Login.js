@@ -31,6 +31,7 @@ export default function Login() {
             const data = await response.json();
     
             if (data.hasOwnProperty("error")) {
+                console.error(data);
                 setError(data.error);
     
                 return;
