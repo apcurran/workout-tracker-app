@@ -6,12 +6,16 @@ export default function WorkoutsEditModal() {
     const [editDuration, setEditDuration] = useState("");
     const [editDate, setEditDate] = useState("");
 
-    const { isEditing, setIsEditing, currentWorkoutId, handleEditWorkoutSubmit } = useContext(WorkoutContext);
+    const { isEditing, setIsEditing, currentWorkoutId, handleEditWorkoutSubmit, setError } = useContext(WorkoutContext);
 
     const showHideClassName = isEditing ? "edit-modal edit-modal--show" : "edit-modal";
 
     function handleEditSubmit(event) {
         event.preventDefault();
+
+        // Reset previous errors
+        setError("");
+
         // Send data to context
         handleEditWorkoutSubmit(currentWorkoutId, editActivity, editDuration, editDate);
 

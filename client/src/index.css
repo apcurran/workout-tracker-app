@@ -25,8 +25,12 @@ p {
 }
 
 .error {
+  grid-column: 1 / -1;
   margin-bottom: 1.1rem;
-  color: darkred;
+  padding: .75rem 1rem;
+  background-color: #fed7d7;
+  color: #742a2a;
+  border-radius: 10px;
   font-size: 1rem;
 }
 

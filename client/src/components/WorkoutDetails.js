@@ -3,8 +3,7 @@ import { WorkoutContext } from '../contexts/WorkoutContext';
 import TrashIcon from "../images/icon-trash.svg";
 
 export default function WorkoutDetails({ workout }) {
-    const { removeWorkout } = useContext(WorkoutContext);
-    const { editWorkoutModal } = useContext(WorkoutContext);
+    const { removeWorkout, editWorkoutModal } = useContext(WorkoutContext);
 
     return (
         <li className="workout-list__item">

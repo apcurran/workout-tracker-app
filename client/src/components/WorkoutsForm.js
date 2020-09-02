@@ -4,6 +4,7 @@ import { WorkoutContext } from '../contexts/WorkoutContext';
 export default function WorkoutsForm() {
     const { addWorkout } = useContext(WorkoutContext);
     const { error } = useContext(WorkoutContext);
+    const { setError } = useContext(WorkoutContext);
 
     const [activity, setActivity] = useState("");
     const [duration, setDuration] = useState("");
@@ -17,6 +18,9 @@ export default function WorkoutsForm() {
 
     async function handleSubmit(event) {
         event.preventDefault();
+
+        // Clear previous errors
+        setError("");
         
         // Call context function
         addWorkout(activity, duration, date);

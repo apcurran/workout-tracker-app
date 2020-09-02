@@ -127,7 +127,7 @@ function WorkoutContextProvider(props) {
     }
 
     return (
-        <WorkoutContext.Provider value={ {workouts, isEditing, setIsEditing, addWorkout, currentWorkoutId, editWorkoutModal, handleEditWorkoutSubmit, removeWorkout} }>
+        <WorkoutContext.Provider value={ {workouts, isEditing, setIsEditing, addWorkout, currentWorkoutId, editWorkoutModal, handleEditWorkoutSubmit, removeWorkout, error, setError} }>
             {props.children}
         </WorkoutContext.Provider>
     );
