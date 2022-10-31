@@ -1,7 +1,5 @@
 # Workout Tracker
 
-[Live Site](https://apcurran-workout-tracker.herokuapp.com/)
-
 ## Features:
 
 ### Back-End:
